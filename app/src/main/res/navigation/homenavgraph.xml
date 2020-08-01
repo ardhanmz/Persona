@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/homenavgraph"
+        app:startDestination="@id/navigation_home">
+
+    <fragment
+            android:id="@+id/navigation_home"
+            android:name="com.zesthra.persona.ui.home.HomeFragment"
+            android:label="home_fragment"
+            tools:layout="@layout/home_fragment" >
+        <action
+                android:id="@+id/action_navigation_home_pop2"
+                app:popUpTo="@id/navigation_home"
+                app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+            android:id="@+id/navigation_timeline"
+            android:name="com.zesthra.persona.ui.home.TimeLineFragment"
+            android:label="time_line_fragment"
+            tools:layout="@layout/time_line_fragment" />
+    <fragment
+            android:id="@+id/navigation_profile"
+            android:name="com.zesthra.persona.ui.home.ProfileFragment"
+            android:label="profile_fragment"
+            tools:layout="@layout/profile_fragment" />
+    <action
+            android:id="@+id/action_homenavgraph_pop"
+            app:popUpTo="@id/homenavgraph"
+            app:popUpToInclusive="true"
+            app:launchSingleTop="true" />
+</navigation>

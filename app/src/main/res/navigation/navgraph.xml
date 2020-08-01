@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/navgraph"
+        app:startDestination="@id/helloLandingFragment">
+
+    <fragment
+            android:id="@+id/helloLandingFragment"
+            android:name="com.zesthra.persona.ui.splashscreen.HelloLandingFragment"
+            android:label="fragment_hello_landing"
+            tools:layout="@layout/fragment_hello_landing" >
+        <action
+                android:id="@+id/action_hello_to_darkmode"
+                app:destination="@id/darkModeLandingFragment2"
+                app:enterAnim="@anim/fragment_open_enter"
+                app:exitAnim="@anim/fragment_fade_exit"
+                app:launchSingleTop="true"
+                app:popUpTo="@id/helloLandingFragment" />
+    </fragment>
+    <fragment
+            android:id="@+id/darkModeLandingFragment2"
+            android:name="com.zesthra.persona.ui.splashscreen.DarkModeLandingFragment"
+            android:label="dark_mode_landing_fragment"
+            tools:layout="@layout/dark_mode_landing_fragment" >
+        <action
+                android:id="@+id/action_mode_to_homeactivity"
+                app:destination="@id/homeActivity"
+                app:enterAnim="@anim/fragment_fade_enter"
+                app:exitAnim="@anim/fragment_fade_exit"
+                app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+                app:popExitAnim="@anim/nav_default_pop_exit_anim"
+                app:launchSingleTop="true" />
+    </fragment>
+    <activity
+            android:id="@+id/homeActivity"
+            android:name="com.zesthra.persona.ui.home.HomeActivity"
+            android:label="activity_home"
+            tools:layout="@layout/activity_home" />
+</navigation>
