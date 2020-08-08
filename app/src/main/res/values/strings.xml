@@ -5,4 +5,7 @@
     <string name="title_home">Home</string>
     <string name="title_timeline">Timeline</string>
     <string name="title_profile">Profile</string>
+    <string name="enter_pin">Please Enter Your PIN To Continue</string>
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
 </resources>

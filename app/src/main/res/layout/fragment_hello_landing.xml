@@ -5,13 +5,13 @@
     <data>
         <variable
                 name="viewmodel"
-                type="com.zesthra.persona.ui.splashscreen.HelloLandingViewModel"
+                type="com.zesthra.persona.ui.splashscreen.helloUI.HelloLandingViewModel"
                 />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/white">
+            >
 
         <RelativeLayout
                 android:id="@+id/relativeHello"

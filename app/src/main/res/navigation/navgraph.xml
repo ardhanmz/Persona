@@ -7,7 +7,7 @@
 
     <fragment
             android:id="@+id/helloLandingFragment"
-            android:name="com.zesthra.persona.ui.splashscreen.HelloLandingFragment"
+            android:name="com.zesthra.persona.ui.splashscreen.helloUI.HelloLandingFragment"
             android:label="fragment_hello_landing"
             tools:layout="@layout/fragment_hello_landing" >
         <action
@@ -17,6 +17,9 @@
                 app:exitAnim="@anim/fragment_fade_exit"
                 app:launchSingleTop="true"
                 app:popUpTo="@id/helloLandingFragment" />
+        <action
+                android:id="@+id/action_helloLandingFragment_to_enterPINFragment"
+                app:destination="@id/enterPINFragment" />
     </fragment>
     <fragment
             android:id="@+id/darkModeLandingFragment2"
@@ -24,17 +27,22 @@
             android:label="dark_mode_landing_fragment"
             tools:layout="@layout/dark_mode_landing_fragment" >
         <action
-                android:id="@+id/action_mode_to_homeactivity"
-                app:destination="@id/homeActivity"
-                app:enterAnim="@anim/fragment_fade_enter"
-                app:exitAnim="@anim/fragment_fade_exit"
-                app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-                app:popExitAnim="@anim/nav_default_pop_exit_anim"
-                app:launchSingleTop="true" />
+                android:id="@+id/action_darkModeLandingFragment_to_homeActivity"
+                app:destination="@id/homeActivity" />
     </fragment>
     <activity
             android:id="@+id/homeActivity"
             android:name="com.zesthra.persona.ui.home.HomeActivity"
             android:label="activity_home"
             tools:layout="@layout/activity_home" />
+    <fragment
+            android:id="@+id/registerFragment"
+            android:name="com.zesthra.persona.ui.splashscreen.RegisterFragment"
+            android:label="register_fragment"
+            tools:layout="@layout/register_fragment" />
+    <fragment
+            android:id="@+id/enterPINFragment"
+            android:name="com.zesthra.persona.ui.splashscreen.pinUI.EnterPINFragment"
+            android:label="enter_p_i_n_fragment"
+            tools:layout="@layout/enter_p_i_n_fragment" />
 </navigation>
