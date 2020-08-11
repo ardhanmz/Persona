@@ -7,17 +7,17 @@ import com.zesthra.persona.data.db.entities.User
 @Dao
 interface UserDao {
     @Query("SELECT * FROM USER")
-    fun getUserList() :  LiveData<List<User?>?>?
+    fun findByAll() :  LiveData<List<User?>?>?
 
-    @Query("SELECT * FROM USER")
-    fun getUserById() : LiveData<User?>?
+    @Query("SELECT * FROM USER WHERE username = :username")
+    fun findByUsername(username: String) : User?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertUser(user: User)
+    suspend fun insert(user: User)
 
     @Delete()
-    fun deleteUser(user: User)
+    suspend fun deleteUser(user: User)
 
     @Update()
-    fun updateUser(user: User)
+    suspend fun updateUser(user: User)
 }

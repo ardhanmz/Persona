@@ -1,11 +1,14 @@
 package com.zesthra.persona.ui.splashscreen.helloUI
 
 import android.app.LauncherActivity.ListItem
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
@@ -16,40 +19,52 @@ import androidx.navigation.findNavController
 import com.zesthra.persona.Persona
 import com.zesthra.persona.R
 import com.zesthra.persona.data.db.entities.User
+import com.zesthra.persona.data.preferences.PreferenceProvider
 import com.zesthra.persona.databinding.FragmentHelloLandingBinding
+import com.zesthra.persona.utils.Global
+import org.koin.android.ext.android.inject
 import javax.inject.Inject
 
 
 class HelloLandingFragment(): Fragment() {
 
-    @Inject
+    /*@Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
+    @Inject
+    lateinit var sharedPref : PreferenceProvider*/
 
+    private val factory : HelloLandingViewModelFactory by inject()
+    private val sharedPref : PreferenceProvider by inject()
     lateinit var viewModel: HelloLandingViewModel
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        retainInstance = true
 
-        (activity?.application as Persona)
-            .getPersonaComponent()
-            ?.inject(this)
 
-    }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(HelloLandingViewModel::class.java)
+        viewModel = ViewModelProviders.of(this, factory).get(HelloLandingViewModel::class.java)
         val binding: FragmentHelloLandingBinding =  DataBindingUtil.inflate(inflater, R.layout.fragment_hello_landing, container, false)
         binding.viewmodel = viewModel
-        binding.hellonext.setOnClickListener { view : View ->
+        checkUIMode()
+        onClick(binding)
+        return binding.root;
+    }
+
+    fun checkUIMode(){
+        if(sharedPref.getUIMode()==true){
+            AppCompatDelegate.setDefaultNightMode(
+                AppCompatDelegate.MODE_NIGHT_YES);
+        }else {
+            AppCompatDelegate.setDefaultNightMode(
+                AppCompatDelegate.MODE_NIGHT_NO);
+        }
+    }
+
+    fun onClick(fragmentHelloLandingBinding: FragmentHelloLandingBinding){
+        fragmentHelloLandingBinding.btnNext.setOnClickListener { view : View ->
             viewModel.getListUser()?.observe(viewLifecycleOwner,
                 Observer<List<User?>?>{ t: List<User?>? ->
                     if(t?.size!! > 0){
@@ -58,10 +73,9 @@ class HelloLandingFragment(): Fragment() {
                         Toast.makeText(context, "User Kosong", Toast.LENGTH_SHORT).show()
                         view.findNavController().navigate(R.id.action_hello_to_darkmode)
                     }
-            })
+                })
 
         }
-        return binding.root;
     }
 
 

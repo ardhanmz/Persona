@@ -29,6 +29,9 @@
         <action
                 android:id="@+id/action_darkModeLandingFragment_to_homeActivity"
                 app:destination="@id/homeActivity" />
+        <action
+                android:id="@+id/action_darkModeLandingFragment2_to_registerFragment"
+                app:destination="@id/registerFragment" />
     </fragment>
     <activity
             android:id="@+id/homeActivity"
@@ -39,10 +42,18 @@
             android:id="@+id/registerFragment"
             android:name="com.zesthra.persona.ui.splashscreen.RegisterFragment"
             android:label="register_fragment"
-            tools:layout="@layout/register_fragment" />
+            tools:layout="@layout/register_fragment" >
+        <action
+                android:id="@+id/action_registerFragment_to_enterPINFragment"
+                app:destination="@id/enterPINFragment" />
+    </fragment>
     <fragment
             android:id="@+id/enterPINFragment"
             android:name="com.zesthra.persona.ui.splashscreen.pinUI.EnterPINFragment"
             android:label="enter_p_i_n_fragment"
-            tools:layout="@layout/enter_p_i_n_fragment" />
+            tools:layout="@layout/enter_p_i_n_fragment" >
+        <action
+                android:id="@+id/action_enterPINFragment_to_homeActivity"
+                app:destination="@id/homeActivity" />
+    </fragment>
 </navigation>

@@ -3,17 +3,13 @@ package com.zesthra.persona.ui.splashscreen.helloUI
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.zesthra.persona.data.db.datasource.UserDataSource
-import com.zesthra.persona.data.repositories.UserRepository
-import javax.inject.Inject
-import javax.inject.Provider
+import com.zesthra.persona.data.repositories.LocalUserRepository
 
-class HelloLandingViewModelFactory @Inject constructor(
-   val userDataSource: UserDataSource
-) : ViewModelProvider.Factory {
+
+class HelloLandingViewModelFactory(
+    private val repository: LocalUserRepository
+): ViewModelProvider.NewInstanceFactory() {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return HelloLandingViewModel(userDataSource) as T
+        return HelloLandingViewModel(repository) as T
     }
-
-
 }

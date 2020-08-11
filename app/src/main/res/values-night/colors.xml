@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primaryColor">#006064</color>
+    <color name="primaryColor">#00796B</color>
     <color name="primaryLightColor">#428e92</color>
     <color name="primaryDarkColor">#00363a</color>
     <color name="secondaryColor">#dd2c00</color>
     <color name="secondaryLightColor">#ff6434</color>
     <color name="secondaryDarkColor">#a30000</color>
-    <color name="primaryTextColor">#000000</color>
-    <color name="secondaryTextColor">#000000</color>
+    <color name="primaryTextColor">#ffffff</color>
+    <color name="secondaryTextColor">#ffffff</color>
     <color name="btnColor">#303030</color>
+    <color name="bgcolor">#000000</color>
     <color name="txtbtnColor">#ffffff</color>
     <color name="strokebtnColor">#006064</color>
     <color name="bottomtabbarinactive">#ffffff</color>

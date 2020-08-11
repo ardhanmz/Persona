@@ -19,7 +19,8 @@ import com.zesthra.persona.factory.component.DaggerPersonaComponent
 import com.zesthra.persona.factory.module.AppModule
 import com.zesthra.persona.factory.module.PreferenceModule
 import com.zesthra.persona.factory.module.RoomModule
-import javax.inject.Inject
+import com.zesthra.persona.utils.Global
+import org.koin.android.ext.android.inject
 
 
 class DarkModeLandingFragment : Fragment() {
@@ -28,18 +29,17 @@ class DarkModeLandingFragment : Fragment() {
         fun newInstance() = DarkModeLandingFragment()
     }
 
-    @Inject
-    lateinit var sharedPref : PreferenceProvider
+    private val sharedPref : PreferenceProvider by inject()
     private lateinit var viewModel: DarkModeLandingViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         retainInstance = true
-
-        (activity?.application as Persona)
-            .getPersonaComponent()
-            ?.inject(this)
+//
+//        (activity?.application as Persona)
+//            .getPersonaComponent()
+//            ?.inject(this)
 
     }
 
@@ -63,11 +63,11 @@ class DarkModeLandingFragment : Fragment() {
             val isNightTheme = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
             when (isNightTheme) {
                 Configuration.UI_MODE_NIGHT_YES ->
-                    sharedPref.putData("DARK_MODE",1)
+                    sharedPref.saveUIMode(true)
                 Configuration.UI_MODE_NIGHT_NO ->
-                    sharedPref.putData("DARK_MODE",0)
+                    sharedPref.saveUIMode(false)
             }
-            if(sharedPref.getData("DARK_MODE").equals(1)){
+            if(sharedPref.getUIMode()==true){
                 Toast.makeText(context, "Gelap", Toast.LENGTH_SHORT).show()
             }else {
                 Toast.makeText(context, "Terang", Toast.LENGTH_SHORT).show()

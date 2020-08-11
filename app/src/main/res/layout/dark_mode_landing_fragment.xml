@@ -44,10 +44,12 @@
 
         <TextView
                 android:id="@+id/textView3"
-                android:layout_width="400dp"
+                android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent posuere mauris ut vulputate tempor. Integer ut porta libero. Sed mattis vel libero vel molestie. Cras euismod varius ligula porttitor fringilla."
                 android:textAlignment="center"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:maxLines="4"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -66,8 +68,8 @@
 
             <ImageButton
                     android:id="@+id/btnDark"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
                     android:layout_weight="2"
                     android:adjustViewBounds="true"
                     android:background="?android:selectableItemBackground"
@@ -76,8 +78,8 @@
 
             <ImageButton
                     android:id="@+id/btnLight"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
                     android:layout_weight="2"
                     android:adjustViewBounds="true"
                     android:background="?android:selectableItemBackground"

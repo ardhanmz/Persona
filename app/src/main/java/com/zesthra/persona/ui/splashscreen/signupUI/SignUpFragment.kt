@@ -8,7 +8,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
+import com.zesthra.persona.Persona
 import com.zesthra.persona.R
+import com.zesthra.persona.data.preferences.PreferenceProvider
+import com.zesthra.persona.databinding.FragmentHelloLandingBinding
+import com.zesthra.persona.databinding.SignUpFragmentBinding
+import com.zesthra.persona.ui.splashscreen.helloUI.HelloLandingViewModel
+import org.koin.android.ext.android.inject
+import org.koin.java.KoinJavaComponent.inject
+import javax.inject.Inject
 
 class SignUpFragment : Fragment() {
 
@@ -16,26 +26,21 @@ class SignUpFragment : Fragment() {
         fun newInstance() = SignUpFragment()
     }
 
+    
+    private val sharedPref : PreferenceProvider by inject()
     private lateinit var viewModel: SignUpViewModel
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val isNightTheme = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-                when (isNightTheme) {
-                    Configuration.UI_MODE_NIGHT_YES ->
-                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                    Configuration.UI_MODE_NIGHT_NO ->
-                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                }
-        return inflater.inflate(R.layout.sign_up_fragment, container, false)
+        viewModel = ViewModelProviders.of(this).get(SignUpViewModel::class.java)
+        val binding: SignUpFragmentBinding =  DataBindingUtil.inflate(inflater, R.layout.sign_up_fragment, container, false)
+        binding.viewmodel = viewModel
+        return  binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(SignUpViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
 
 }

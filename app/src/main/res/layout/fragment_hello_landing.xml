@@ -44,28 +44,27 @@
 
             <TextView
                     android:id="@+id/textView"
-                    android:layout_width="wrap_content"
+                    android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/txtgreettitle"
                     android:layout_marginTop="8dp"
                     android:marqueeRepeatLimit="marquee_forever"
                     android:maxLines="3"
+                    android:textSize="18sp"
                     android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tincidunt dolor non mi ornare, eget."
                     android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     app:autoSizeTextType="none" />
 
         </RelativeLayout>
 
-        <ImageButton
-                android:id="@+id/hellonext"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:background="#FFFFFF"
-                android:src="@drawable/ic_next"
+        <Button
+                android:id="@+id/btnNext"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/rounded_bg"
+                android:text="@string/next"
+                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

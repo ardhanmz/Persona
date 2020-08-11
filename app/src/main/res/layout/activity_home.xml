@@ -18,7 +18,7 @@
             app:navGraph="@navigation/homenavgraph" />
     <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/navigation"
-            app:elevation="3dp"
+            app:elevation="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="0dp"
