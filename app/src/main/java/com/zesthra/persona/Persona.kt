@@ -32,9 +32,6 @@ class Persona : Application() {
         }
 
     }
-//    fun getPersonaComponent(): PersonaComponent? {
-//        return personaComponent
-//    }
 
 
 

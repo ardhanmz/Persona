@@ -3,7 +3,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/navgraph"
-        app:startDestination="@id/helloLandingFragment">
+        app:startDestination="@id/splashFragment">
 
     <fragment
             android:id="@+id/helloLandingFragment"
@@ -13,9 +13,11 @@
         <action
                 android:id="@+id/action_hello_to_darkmode"
                 app:destination="@id/darkModeLandingFragment2"
-                app:enterAnim="@anim/fragment_open_enter"
-                app:exitAnim="@anim/fragment_fade_exit"
+                app:enterAnim="@android:anim/fade_in"
+                app:exitAnim="@android:anim/fade_out"
                 app:launchSingleTop="true"
+                app:popEnterAnim="@android:anim/slide_in_left"
+                app:popExitAnim="@android:anim/slide_out_right"
                 app:popUpTo="@id/helloLandingFragment" />
         <action
                 android:id="@+id/action_helloLandingFragment_to_enterPINFragment"
@@ -27,26 +29,14 @@
             android:label="dark_mode_landing_fragment"
             tools:layout="@layout/dark_mode_landing_fragment" >
         <action
-                android:id="@+id/action_darkModeLandingFragment_to_homeActivity"
-                app:destination="@id/homeActivity" />
-        <action
-                android:id="@+id/action_darkModeLandingFragment2_to_registerFragment"
-                app:destination="@id/registerFragment" />
+                android:id="@+id/action_darkModeLandingFragment2_to_signUpFragment2"
+                app:destination="@id/signUpFragment" />
     </fragment>
     <activity
             android:id="@+id/homeActivity"
             android:name="com.zesthra.persona.ui.home.HomeActivity"
             android:label="activity_home"
             tools:layout="@layout/activity_home" />
-    <fragment
-            android:id="@+id/registerFragment"
-            android:name="com.zesthra.persona.ui.splashscreen.RegisterFragment"
-            android:label="register_fragment"
-            tools:layout="@layout/register_fragment" >
-        <action
-                android:id="@+id/action_registerFragment_to_enterPINFragment"
-                app:destination="@id/enterPINFragment" />
-    </fragment>
     <fragment
             android:id="@+id/enterPINFragment"
             android:name="com.zesthra.persona.ui.splashscreen.pinUI.EnterPINFragment"
@@ -55,5 +45,31 @@
         <action
                 android:id="@+id/action_enterPINFragment_to_homeActivity"
                 app:destination="@id/homeActivity" />
+        <argument
+                android:name="username"
+                app:argType="string"
+                android:defaultValue=""/>
+    </fragment>
+    <fragment
+            android:id="@+id/splashFragment"
+            android:name="com.zesthra.persona.ui.splashscreen.splashUI.SplashFragment"
+            android:label="fragment_splash"
+            tools:layout="@layout/fragment_splash" >
+        <action
+                android:id="@+id/action_splashFragment_to_helloLandingFragment"
+                app:destination="@id/helloLandingFragment"
+                app:enterAnim="@android:anim/fade_in"
+                app:exitAnim="@android:anim/fade_out"
+                app:popEnterAnim="@android:anim/slide_in_left"
+                app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
+    <fragment
+            android:id="@+id/signUpFragment"
+            android:name="com.zesthra.persona.ui.splashscreen.signupUI.SignUpFragment"
+            android:label="SignUpFragment"
+            tools:layout="@layout/sign_up_fragment">
+        <action
+                android:id="@+id/action_signUpFragment_to_enterPINFragment2"
+                app:destination="@id/enterPINFragment" />
     </fragment>
 </navigation>

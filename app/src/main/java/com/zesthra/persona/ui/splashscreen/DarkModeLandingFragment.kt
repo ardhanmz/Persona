@@ -67,12 +67,15 @@ class DarkModeLandingFragment : Fragment() {
                 Configuration.UI_MODE_NIGHT_NO ->
                     sharedPref.saveUIMode(false)
             }
-            if(sharedPref.getUIMode()==true){
-                Toast.makeText(context, "Gelap", Toast.LENGTH_SHORT).show()
-            }else {
-                Toast.makeText(context, "Terang", Toast.LENGTH_SHORT).show()
-            }
-            view.findNavController().navigate(R.id.action_darkModeLandingFragment_to_homeActivity);
+//            if(sharedPref.getUIMode()==true){
+//                Toast.makeText(context, "Gelap", Toast.LENGTH_SHORT).show()
+//            }else {
+//                Toast.makeText(context, "Terang", Toast.LENGTH_SHORT).show()
+//            }
+            view.findNavController().navigate(R.id.action_darkModeLandingFragment2_to_signUpFragment2);
+        }
+        binding.btnSkip.setOnClickListener { view: View ->
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
         }
         return binding.root;
     }
