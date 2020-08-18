@@ -5,7 +5,7 @@
     <data>
         <variable
                 name="viewmodel"
-                type="com.zesthra.persona.ui.splashscreen.DarkModeLandingViewModel"
+                type="com.zesthra.persona.ui.splashscreen.modeUI.DarkModeLandingViewModel"
                 />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -13,25 +13,18 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
-import com.zesthra.persona.Persona
 import com.zesthra.persona.R
 import com.zesthra.persona.data.db.entities.User
 import com.zesthra.persona.data.preferences.PreferenceProvider
 import com.zesthra.persona.databinding.FragmentHelloLandingBinding
-import com.zesthra.persona.utils.Global
 import org.koin.android.ext.android.inject
-import javax.inject.Inject
+
 
 
 class HelloLandingFragment(): Fragment() {
 
-    /*@Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
-    @Inject
-    lateinit var sharedPref : PreferenceProvider*/
 
     private val factory : HelloLandingViewModelFactory by inject()
     private val sharedPref : PreferenceProvider by inject()

@@ -25,7 +25,7 @@
     </fragment>
     <fragment
             android:id="@+id/darkModeLandingFragment2"
-            android:name="com.zesthra.persona.ui.splashscreen.DarkModeLandingFragment"
+            android:name="com.zesthra.persona.ui.splashscreen.modeUI.DarkModeLandingFragment"
             android:label="dark_mode_landing_fragment"
             tools:layout="@layout/dark_mode_landing_fragment" >
         <action

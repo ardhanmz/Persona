@@ -7,7 +7,10 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.google.gms.google-services'
 
 apply plugin: 'kotlin-kapt'
+
 apply plugin: "androidx.navigation.safeargs.kotlin"
+
+apply plugin: 'com.google.firebase.firebase-perf'
 
 android {
     compileSdkVersion 29
@@ -35,8 +38,9 @@ android {
             signingConfig signingConfigs.debug
         }
     }
-    dataBinding {
-        enabled = true
+    buildFeatures{
+        dataBinding = true
+        viewBinding = true
     }
     compileOptions {
         sourceCompatibility = 1.8
@@ -58,19 +62,18 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
-    implementation 'com.google.android.material:material:1.1.0'
     def nav_version = "2.3.0"
-    def dagger_version = "2.16"
-    // Stable Koin Version
     def koin_version = "2.1.5"
+    def google_material = "1.2.0"
+
+
+
+    implementation "com.google.android.material:material:$google_material"
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.core:core-ktx:1.3.1'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'com.google.firebase:firebase-analytics:17.4.4'
+
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
@@ -78,15 +81,18 @@ dependencies {
 
     //Firebase Dependecies
     implementation "com.google.firebase:firebase-auth:19.3.2"
+    implementation 'com.google.firebase:firebase-analytics:17.5.0'
     implementation "com.google.firebase:firebase-firestore:21.5.0"
     implementation "com.google.android.gms:play-services-auth:18.1.0"
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'com.google.firebase:firebase-perf:19.0.8'
 
-    //Kodein Dependency Injection
-//    implementation "org.kodein.di:kodein-di-generic-jvm:6.2.1"
-    implementation("org.kodein.di:kodein-di-jvm:7.0.0")
-    implementation("org.kodein.di:kodein-di-framework-android-x:7.0.0")
-//    implementation "org.kodein.di:kodein-di-framework-android-x:6.2.1"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.core:core-ktx:1.3.1'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+
 
     //Android Room
     implementation "androidx.room:room-runtime:2.3.0-alpha02"
@@ -103,13 +109,6 @@ dependencies {
     androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
 
     implementation 'com.github.arimorty:floatingsearchview:2.1.1'
-
-    // Dagger Dependecies injector
-    implementation "com.google.dagger:dagger:$dagger_version"
-    implementation "com.google.dagger:dagger-android:$dagger_version"
-    implementation "com.google.dagger:dagger-android-support:$dagger_version"
-    kapt "com.google.dagger:dagger-compiler:$dagger_version"
-    kapt "com.google.dagger:dagger-android-processor:$dagger_version"
 
     // Koin for Android
     implementation "org.koin:koin-android:$koin_version"
