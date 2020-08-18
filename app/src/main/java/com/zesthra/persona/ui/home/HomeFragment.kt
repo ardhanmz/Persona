@@ -6,7 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import com.zesthra.persona.R
+import com.zesthra.persona.databinding.HomeFragmentBinding
+import com.zesthra.persona.databinding.HomeFragmentBindingImpl
 
 class HomeFragment : Fragment() {
 
@@ -20,13 +24,16 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.home_fragment, container, false)
+        val binding: HomeFragmentBinding = DataBindingUtil.inflate(inflater,R.layout.home_fragment, container, false)
+        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
+        binding.viewmodel = viewModel;
+        binding.fabHome.setOnClickListener { it ->
+            val action = HomeFragmentDirections.actionNavigationHomeToAddNotes();
+            view?.findNavController()?.navigate(action)
+        }
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
+
 
 }

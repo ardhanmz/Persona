@@ -11,9 +11,11 @@
             android:label="home_fragment"
             tools:layout="@layout/home_fragment" >
         <action
-                android:id="@+id/action_navigation_home_pop2"
-                app:popUpTo="@id/navigation_home"
-                app:popUpToInclusive="true" />
+                android:id="@+id/action_navigation_home_to_addNotes"
+                app:destination="@id/addNotes" />
+        <action
+                android:id="@+id/action_navigation_home_to_editNotes"
+                app:destination="@id/editNotes" />
     </fragment>
     <fragment
             android:id="@+id/navigation_timeline"
@@ -30,4 +32,14 @@
             app:popUpTo="@id/homenavgraph"
             app:popUpToInclusive="true"
             app:launchSingleTop="true" />
+    <activity
+            android:id="@+id/addNotes"
+            android:name="com.zesthra.persona.ui.addnotes.AddNotes"
+            android:label="activity_add_notes"
+            tools:layout="@layout/activity_add_notes" />
+    <activity
+            android:id="@+id/editNotes"
+            android:name="com.zesthra.persona.ui.addnotes.EditNotes"
+            android:label="activity_edit_notes"
+            tools:layout="@layout/activity_edit_notes" />
 </navigation>

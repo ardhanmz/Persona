@@ -12,17 +12,8 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
 class Persona : Application() {
-//    private var personaComponent: PersonaComponent? = null
-
     override fun onCreate() {
         super.onCreate()
-        //Dagger 2 Init
-            /*personaComponent = DaggerPersonaComponent
-            .builder()
-            .appModule(AppModule(this))
-            .roomModule(RoomModule(this))
-            .preferenceModule(PreferenceModule(this.applicationContext))
-            .build();*/
         //KOIN Init
         startKoin {
             // declare used Android context
