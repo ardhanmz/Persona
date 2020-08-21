@@ -46,6 +46,11 @@ class HelloLandingFragment(): Fragment() {
         return binding.root;
     }
 
+    override fun onResume() {
+        super.onResume()
+        checkUIMode()
+    }
+
     fun checkUIMode(){
         if(sharedPref.getUIMode()==true){
             AppCompatDelegate.setDefaultNightMode(

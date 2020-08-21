@@ -17,4 +17,7 @@ class DarkModeLandingViewModel(
     fun selectDarkMode(){
         sharedPreference.saveUIMode(true)
     }
+    fun checkUIMode(): Boolean? {
+        return sharedPreference.getUIMode()
+    }
 }

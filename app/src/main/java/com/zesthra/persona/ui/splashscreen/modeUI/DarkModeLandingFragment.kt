@@ -13,7 +13,6 @@ import androidx.navigation.findNavController
 import com.zesthra.persona.R
 import com.zesthra.persona.data.preferences.PreferenceProvider
 import com.zesthra.persona.databinding.DarkModeLandingFragmentBinding
-import com.zesthra.persona.ui.splashscreen.DarkModeLandingFragmentDirections
 import com.zesthra.persona.ui.splashscreen.helloUI.HelloLandingViewModelFactory
 import org.koin.android.ext.android.inject
 
@@ -55,13 +54,6 @@ class DarkModeLandingFragment : Fragment() {
             viewModel.selectLightMode();
         }
         binding.btnNext.setOnClickListener { view: View ->
-//            val isNightTheme = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-//            when (isNightTheme) {
-//                Configuration.UI_MODE_NIGHT_YES ->
-//
-//                Configuration.UI_MODE_NIGHT_NO ->
-//
-//            }
             val action = DarkModeLandingFragmentDirections.actionDarkModeLandingFragment2ToSignUpFragment2()
             view.findNavController().navigate(action)
         }
@@ -73,10 +65,15 @@ class DarkModeLandingFragment : Fragment() {
         return binding.root;
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(DarkModeLandingViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
 
+    override fun onResume() {
+        super.onResume()
+        if(viewModel.checkUIMode()==true){
+            AppCompatDelegate.setDefaultNightMode(
+                AppCompatDelegate.MODE_NIGHT_YES);
+        }else {
+            AppCompatDelegate.setDefaultNightMode(
+                AppCompatDelegate.MODE_NIGHT_NO);
+        }
+    }
 }

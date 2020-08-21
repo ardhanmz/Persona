@@ -18,7 +18,6 @@ import com.zesthra.persona.ui.splashscreen.helloUI.HelloLandingViewModel
 import com.zesthra.persona.ui.splashscreen.pinUI.EnterPINFragmentDirections
 import org.koin.android.ext.android.inject
 import org.koin.java.KoinJavaComponent.inject
-import javax.inject.Inject
 
 class SignUpFragment : Fragment() {
 

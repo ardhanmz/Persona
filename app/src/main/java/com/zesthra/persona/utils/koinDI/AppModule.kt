@@ -3,7 +3,6 @@ package com.zesthra.persona.utils.koinDI
 import com.zesthra.persona.data.db.AppDatabase
 import com.zesthra.persona.data.preferences.PreferenceProvider
 import com.zesthra.persona.data.repositories.LocalUserRepository
-import com.zesthra.persona.factory.module.PreferenceModule
 import com.zesthra.persona.ui.splashscreen.helloUI.HelloLandingViewModelFactory
 import com.zesthra.persona.ui.splashscreen.modeUI.DarkModeLandingViewModelFactory
 import org.koin.dsl.module

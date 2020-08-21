@@ -10,7 +10,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.zesthra.persona.R
 import com.zesthra.persona.databinding.HomeFragmentBinding
-import com.zesthra.persona.databinding.HomeFragmentBindingImpl
 
 class HomeFragment : Fragment() {
 
@@ -27,7 +26,7 @@ class HomeFragment : Fragment() {
         val binding: HomeFragmentBinding = DataBindingUtil.inflate(inflater,R.layout.home_fragment, container, false)
         viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         binding.viewmodel = viewModel;
-        binding.fabHome.setOnClickListener { it ->
+        binding.fabHome.setOnClickListener { view : View ->
             val action = HomeFragmentDirections.actionNavigationHomeToAddNotes();
             view?.findNavController()?.navigate(action)
         }
