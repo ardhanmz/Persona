@@ -20,8 +20,8 @@
                 app:popExitAnim="@android:anim/slide_out_right"
                 app:popUpTo="@id/helloLandingFragment" />
         <action
-                android:id="@+id/action_helloLandingFragment_to_enterPINFragment"
-                app:destination="@id/enterPINFragment" />
+                android:id="@+id/action_helloLandingFragment_to_homeActivity"
+                app:destination="@id/homeActivity" />
     </fragment>
     <fragment
             android:id="@+id/darkModeLandingFragment2"

@@ -10,16 +10,17 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.zesthra.persona.R
+import com.zesthra.persona.data.db.entities.User
 import com.zesthra.persona.databinding.EnterPINFragmentBinding
-import kotlinx.android.synthetic.main.activity_home.view.*
+import org.koin.android.ext.android.inject
 
 class EnterPINFragment : Fragment() {
 
+
     val args: EnterPINFragmentArgs by navArgs()
     lateinit var username : String
-    companion object {
-        fun newInstance() = EnterPINFragment()
-    }
+
+    val factory: EnterPINViewModelFactory by inject()
 
     private lateinit var viewModel: EnterPINViewModel
 
@@ -28,10 +29,12 @@ class EnterPINFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding : EnterPINFragmentBinding = DataBindingUtil.inflate(inflater,R.layout.enter_p_i_n_fragment, container, false)
-        viewModel = ViewModelProviders.of(this).get(EnterPINViewModel::class.java)
+        viewModel = ViewModelProviders.of(this, factory).get(EnterPINViewModel::class.java)
         binding.viewmodel = viewModel;
         username = args.username;
+        val user = User(1,username, 1234)
         binding.btnNext.setOnClickListener { view : View ->
+            viewModel.saveUser(user)
             view.findNavController().navigate(R.id.action_enterPINFragment_to_homeActivity)
         }
         return binding.root

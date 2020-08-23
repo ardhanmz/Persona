@@ -66,9 +66,11 @@ class HelloLandingFragment(): Fragment() {
             viewModel.getListUser()?.observe(viewLifecycleOwner,
                 Observer<List<User?>?>{ t: List<User?>? ->
                     if(t?.size!! > 0){
-                        Toast.makeText(context, "Anda Telah Terdaftar", Toast.LENGTH_SHORT).show()
+//                        Toast.makeText(context, "Anda Telah Terdaftar", Toast.LENGTH_SHORT).show()
+                        val action = HelloLandingFragmentDirections.actionHelloLandingFragmentToHomeActivity();
+                        view.findNavController().navigate(action)
                     }else{
-                        Toast.makeText(context, "User Kosong", Toast.LENGTH_SHORT).show()
+//                        Toast.makeText(context, "User Kosong", Toast.LENGTH_SHORT).show()
                         view.findNavController().navigate(R.id.action_hello_to_darkmode)
                     }
                 })

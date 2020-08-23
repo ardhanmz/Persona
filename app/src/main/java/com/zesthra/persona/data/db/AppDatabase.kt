@@ -31,7 +31,7 @@ abstract class AppDatabase : RoomDatabase() {
             Room.databaseBuilder(
                 context.applicationContext,
                 AppDatabase::class.java,
-                "Persona.db"
+                "Persona"
             ).build()
     }
 
