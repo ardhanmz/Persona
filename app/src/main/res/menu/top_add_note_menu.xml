@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+            android:id="@+id/favorite"
+            android:icon="@drawable/ic_day_and_night"
+            android:title="asdasd"
+            app:showAsAction="ifRoom" />
+
+    <item
+            android:id="@+id/search"
+            android:icon="@drawable/ic_search_black_24dp"
+            android:title="ASDASD"
+
+            app:showAsAction="ifRoom" />
+
+<!--    <item-->
+<!--            android:id="@+id/more"-->
+<!--            android:title="@string/more"-->
+<!--            android:contentDescription="@string/content_description_more"-->
+<!--            app:showAsAction="never" />-->
+
+</menu>

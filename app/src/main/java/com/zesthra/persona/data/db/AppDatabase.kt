@@ -4,17 +4,27 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
+import com.zesthra.persona.data.db.dataaccess.NotesDao
 import com.zesthra.persona.data.db.dataaccess.UserDao
+import com.zesthra.persona.data.db.entities.Notes
 import com.zesthra.persona.data.db.entities.User
 
 @Database(
-    entities = [User::class],
-    version = 1
+    entities = [User::class, Notes::class],
+    version = 2
 )
 
 abstract class AppDatabase : RoomDatabase() {
-
+    val MIGRATION_1_2 = object : Migration(1, 2) {
+        override fun migrate(database: SupportSQLiteDatabase) {
+            database.execSQL("CREATE TABLE `Notes` (`id` INTEGER, `name` TEXT, " +
+                    "PRIMARY KEY(`id`))")
+        }
+    }
     abstract fun getUserDao(): UserDao
+    abstract fun getNotesDao() : NotesDao
     companion object {
 
         @Volatile

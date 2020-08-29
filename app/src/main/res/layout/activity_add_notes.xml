@@ -7,8 +7,28 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.addnotes.AddNotes">
+    <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/topAppBar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:menu="@menu/top_add_note_menu"
+                app:navigationIcon="@drawable/ic_arrow_back_black_24dp"
+                style="@style/Widget.MaterialComponents.Toolbar.Primary"
+                />
+
+    </com.google.android.material.appbar.AppBarLayout>
 
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
         <!-- Bottom bar -->
         <com.google.android.material.bottomappbar.BottomAppBar
                 android:id="@+id/bar"
@@ -27,13 +47,13 @@
                 />
 
         <!-- Floating Action button -->
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fab"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:tint="@android:color/white"
-                app:fabSize="normal"
-                app:layout_anchor="@id/bar"
-                app:srcCompat="@drawable/ic_plus" />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tint="@android:color/white"
+            app:fabSize="normal"
+            app:layout_anchor="@id/bar"
+            app:srcCompat="@drawable/ic_plus" />
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
