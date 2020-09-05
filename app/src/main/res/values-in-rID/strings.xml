@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Persona</string>
+    <string name="enter_pin">Mohon Masukkan PIN Untuk Melanjutkan</string>
+    <string name="next">Selanjutnya</string>
+    <string name="skip">Lewati</string>
+    <string name="error_insert_username">Mohon Masukkan Username Anda</string>
+    <string name="err_pin_exceeded">Panjang PIN Maksimal 4</string>
+    <string name="title_profile">Profil</string>
+    <string name="title_timeline">Linimasa</string>
+    <string name="title_home">Beranda</string>
+    <string name="err_pin_required">Mohon Masukkan PIN Anda</string>
+</resources>

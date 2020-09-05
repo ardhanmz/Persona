@@ -9,4 +9,7 @@
     <string name="next">Next</string>
     <string name="skip">Skip</string>
     <string name="error_insert_username">Please Insert Your Username</string>
+    <string name="err_pin_required">Please Enter PIN</string>
+    <string name="err_pin_exceeded">Maximal PIN Length Is 4</string>
+    <string name="err_username_exceeded">Username is too long</string>
 </resources>

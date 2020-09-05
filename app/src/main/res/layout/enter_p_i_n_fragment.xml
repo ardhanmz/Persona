@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
                 name="viewmodel"
@@ -7,12 +9,10 @@
                 />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="16dp"
+            android:theme="@style/AppTheme"
             tools:context=".MainActivity">
 
         <ImageView
@@ -38,6 +38,7 @@
                 android:text="Welcome Back, Dummy"
                 android:textAlignment="center"
                 android:textSize="24sp"
+                app:layout_constraintBottom_toTopOf="@+id/textinputlayoutPIN"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView2" />
@@ -47,92 +48,64 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="132dp"
+                android:layout_marginTop="25dp"
                 android:layout_marginEnd="16dp"
                 android:text="@string/enter_pin"
                 android:textAlignment="center"
                 android:textSize="18sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/textView4"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
-        <RelativeLayout
-                android:id="@+id/relativeLayout"
-                android:layout_width="343dp"
-                android:layout_height="107dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:gravity="center"
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textinputlayoutPIN"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:counterEnabled="true"
+                app:counterMaxLength="4"
+                android:hint="PIN"
+                app:boxStrokeColor="@color/primaryColor"
+                app:boxStrokeWidth="2dp"
+                app:helperTextEnabled="true"
+                app:helperText="Your Character"
+                app:counterOverflowTextAppearance="@style/counterOverride"
+                app:counterTextAppearance="@style/counterText"
+                app:layout_constraintBottom_toTopOf="@+id/btnNext"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView5">
+                app:layout_constraintTop_toBottomOf="@+id/textView5"
+                app:passwordToggleEnabled="true"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-            <EditText
-                    android:background="@drawable/rounded_bg_inverted"
-                    android:id="@+id/edit_text_1"
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editText2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:gravity="center"
-                    android:inputType="number"
-                    android:maxLength="1"
-                    android:maxLines="1"
-                    android:padding="20dp"
-                    tools:ignore="Autofill,LabelFor" />
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:ems="10"
+                    android:inputType="numberPassword"
+                     />
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
-                    android:id="@+id/edit_text_2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:layout_toEndOf="@id/edit_text_1"
-                    android:gravity="center"
-                    android:inputType="number"
-                    android:maxLength="1"
-                    android:maxLines="1"
-                    android:padding="20dp"
-                    tools:ignore="Autofill,LabelFor" />
-
-            <EditText
-                    android:id="@+id/edit_text_3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:layout_toEndOf="@id/edit_text_2"
-                    android:gravity="center"
-                    android:inputType="number"
-                    android:maxLength="1"
-                    android:maxLines="1"
-                    android:padding="20dp"
-                    tools:ignore="Autofill,LabelFor" />
-
-            <EditText
-                    android:id="@+id/edit_text_4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:layout_toEndOf="@id/edit_text_3"
-                    android:gravity="center"
-                    android:inputType="number"
-                    android:maxLength="1"
-                    android:maxLines="1"
-                    android:padding="20dp"
-                    tools:ignore="Autofill,LabelFor" />
-        </RelativeLayout>
 
         <Button
                 android:id="@+id/btnNext"
                 android:layout_width="250dp"
                 android:layout_height="50dp"
+                android:layout_marginTop="24dp"
                 android:background="@drawable/rounded_bg"
                 android:text="@string/next"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
+                app:layout_constraintTop_toBottomOf="@+id/textinputlayoutPIN"
+                app:layout_constraintVertical_bias="1.0" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
