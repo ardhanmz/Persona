@@ -29,13 +29,13 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/greetings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="25dp"
                 android:layout_marginEnd="16dp"
-                android:text="Welcome Back, Dummy"
+                android:text="@string/greeting_enter_PIN"
                 android:textAlignment="center"
                 android:textSize="24sp"
                 app:layout_constraintBottom_toTopOf="@+id/textinputlayoutPIN"

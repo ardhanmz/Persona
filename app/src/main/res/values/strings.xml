@@ -12,4 +12,5 @@
     <string name="err_pin_required">Please Enter PIN</string>
     <string name="err_pin_exceeded">Maximal PIN Length Is 4</string>
     <string name="err_username_exceeded">Username is too long</string>
+    <string name="greeting_enter_PIN">Welcome Back %1$s</string>
 </resources>

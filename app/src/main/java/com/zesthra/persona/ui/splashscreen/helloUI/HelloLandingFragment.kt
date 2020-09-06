@@ -67,7 +67,7 @@ class HelloLandingFragment(): Fragment() {
                 Observer<List<User?>?>{ t: List<User?>? ->
                     if(t?.size!! > 0){
 //                        Toast.makeText(context, "Anda Telah Terdaftar", Toast.LENGTH_SHORT).show()
-                        val action = HelloLandingFragmentDirections.actionHelloLandingFragmentToHomeActivity();
+                        val action = HelloLandingFragmentDirections.actionHelloToEnterpin(t.get(0)!!.username);
                         view.findNavController().navigate(action)
                     }else{
 //                        Toast.makeText(context, "User Kosong", Toast.LENGTH_SHORT).show()

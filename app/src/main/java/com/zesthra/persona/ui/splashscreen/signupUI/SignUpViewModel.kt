@@ -11,9 +11,9 @@ import java.lang.Exception
 
 class SignUpViewModel(val localUserRepository: LocalUserRepository) : ViewModel() {
     // TODO: Implement the ViewModel
-    lateinit var username : String
+    var username : String = ""
     var PIN : Int = 0
-    lateinit var exceptionMSG: String
+    var exceptionMSG: String = ""
 
     fun createDataUser() : User{
         val user = User(1,username, PIN)

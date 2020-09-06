@@ -1,6 +1,7 @@
 package com.zesthra.persona.ui.splashscreen.pinUI
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.zesthra.persona.data.db.entities.User
 import com.zesthra.persona.data.repositories.LocalUserRepository
@@ -20,5 +21,8 @@ class EnterPINViewModel(val localUserRepository: LocalUserRepository) : ViewMode
             Log.e(Global.tag_err_save_usr, ex.message)
         }
 
+    }
+    fun getListUser(): LiveData<List<User?>?>? {
+        return localUserRepository.findAll()
     }
 }

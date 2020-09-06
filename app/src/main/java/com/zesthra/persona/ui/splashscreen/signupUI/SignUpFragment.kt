@@ -96,7 +96,7 @@ class SignUpFragment : Fragment() {
                 val user = viewModel.createDataUser();
                 viewModel.saveUser(user)
                 if(viewModel.exceptionMSG.length ==0){
-
+                    view.findNavController().navigate(R.id.action_signUpFragment_to_homeActivity)
                 }
             }
         }
