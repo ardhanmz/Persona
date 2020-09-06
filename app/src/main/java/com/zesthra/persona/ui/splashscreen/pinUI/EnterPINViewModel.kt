@@ -18,7 +18,7 @@ class EnterPINViewModel(val localUserRepository: LocalUserRepository) : ViewMode
                 localUserRepository.insertUser(user)
             }
         }catch (ex : Exception){
-            Log.e(Global.tag_err_save_usr, ex.message)
+            Log.e(Global.tag_err_save_usr, ex.message!!)
         }
 
     }

@@ -1,6 +1,5 @@
 package com.zesthra.persona.ui.splashscreen.modeUI
 
-import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,9 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import com.zesthra.persona.R
-import com.zesthra.persona.data.preferences.PreferenceProvider
 import com.zesthra.persona.databinding.DarkModeLandingFragmentBinding
-import com.zesthra.persona.ui.splashscreen.helloUI.HelloLandingViewModelFactory
 import org.koin.android.ext.android.inject
 
 
@@ -40,18 +37,18 @@ class DarkModeLandingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val binding : DarkModeLandingFragmentBinding = DataBindingUtil.inflate(inflater, R.layout.dark_mode_landing_fragment, container, false);
-        viewModel = ViewModelProviders.of(this, factory).get(DarkModeLandingViewModel::class.java);
-        binding.viewmodel = viewModel;
+        val binding : DarkModeLandingFragmentBinding = DataBindingUtil.inflate(inflater, R.layout.dark_mode_landing_fragment, container, false)
+        viewModel = ViewModelProviders.of(this, factory).get(DarkModeLandingViewModel::class.java)
+        binding.viewmodel = viewModel
         binding.btnDark.setOnClickListener { view: View ->
             AppCompatDelegate.setDefaultNightMode(
-                AppCompatDelegate.MODE_NIGHT_YES);
+                AppCompatDelegate.MODE_NIGHT_YES)
             viewModel.selectDarkMode()
         }
         binding.btnLight.setOnClickListener { view: View ->
             AppCompatDelegate.setDefaultNightMode(
-                AppCompatDelegate.MODE_NIGHT_NO);
-            viewModel.selectLightMode();
+                AppCompatDelegate.MODE_NIGHT_NO)
+            viewModel.selectLightMode()
         }
         binding.btnNext.setOnClickListener { view: View ->
             val action = DarkModeLandingFragmentDirections.actionDarkModeLandingFragment2ToSignUpFragment2()
@@ -62,7 +59,7 @@ class DarkModeLandingFragment : Fragment() {
             val action = DarkModeLandingFragmentDirections.actionDarkModeLandingFragment2ToSignUpFragment2()
             view.findNavController().navigate(action)
         }
-        return binding.root;
+        return binding.root
     }
 
 
@@ -70,10 +67,10 @@ class DarkModeLandingFragment : Fragment() {
         super.onResume()
         if(viewModel.checkUIMode()==true){
             AppCompatDelegate.setDefaultNightMode(
-                AppCompatDelegate.MODE_NIGHT_YES);
+                AppCompatDelegate.MODE_NIGHT_YES)
         }else {
             AppCompatDelegate.setDefaultNightMode(
-                AppCompatDelegate.MODE_NIGHT_NO);
+                AppCompatDelegate.MODE_NIGHT_NO)
         }
     }
 }

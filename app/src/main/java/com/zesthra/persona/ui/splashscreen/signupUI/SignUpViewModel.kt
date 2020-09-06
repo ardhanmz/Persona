@@ -1,7 +1,6 @@
 package com.zesthra.persona.ui.splashscreen.signupUI
 
 import android.util.Log
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.zesthra.persona.data.db.entities.User
 import com.zesthra.persona.data.repositories.LocalUserRepository
@@ -12,12 +11,11 @@ import java.lang.Exception
 class SignUpViewModel(val localUserRepository: LocalUserRepository) : ViewModel() {
     // TODO: Implement the ViewModel
     var username : String = ""
-    var PIN : Int = 0
+    var pincode : Int = 0
     var exceptionMSG: String = ""
 
     fun createDataUser() : User{
-        val user = User(1,username, PIN)
-        return user
+        return User(1, username, pincode)
     }
 
     fun saveUser(user: User){
@@ -26,7 +24,7 @@ class SignUpViewModel(val localUserRepository: LocalUserRepository) : ViewModel(
                 localUserRepository.insertUser(user)
             }
         }catch (ex : Exception){
-            Log.e(Global.tag_err_save_usr, ex.message)
+            Log.e(Global.tag_err_save_usr, ex.message!!)
             exceptionMSG = ex.message.toString()
         }
 

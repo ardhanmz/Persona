@@ -17,7 +17,7 @@ private const val ARG_PARAM2 = "param2"
 
 class SplashFragment : Fragment() {
 
-    private val SPLASH_TIME_OUT:Long=3000 // 3 sec
+    private val TIME_OUT:Long=3000 // 3 sec
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,8 +27,8 @@ class SplashFragment : Fragment() {
         val view: View =  inflater.inflate(R.layout.fragment_splash, container, false)
         handler.postDelayed({
             view.findNavController().navigate(R.id.action_splashFragment_to_helloLandingFragment)
-        }, SPLASH_TIME_OUT)
-        return view;
+        }, TIME_OUT)
+        return view
     }
 
 

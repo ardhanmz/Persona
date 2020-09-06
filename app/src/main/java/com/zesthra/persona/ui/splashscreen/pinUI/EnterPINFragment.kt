@@ -9,26 +9,25 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.zesthra.persona.R
 import com.zesthra.persona.data.db.entities.User
 import com.zesthra.persona.databinding.EnterPINFragmentBinding
-import com.zesthra.persona.ui.splashscreen.helloUI.HelloLandingFragmentDirections
 import kotlinx.android.synthetic.main.enter_p_i_n_fragment.*
+import kotlinx.android.synthetic.main.sign_up_fragment.*
 import org.koin.android.ext.android.inject
 
 
 class EnterPINFragment : Fragment() {
 
 
-    val args: EnterPINFragmentArgs by navArgs()
+    private val args: EnterPINFragmentArgs by navArgs()
     lateinit var username : String
     var pin : Int = 0
 
-    val factory: EnterPINViewModelFactory by inject()
+    private val factory: EnterPINViewModelFactory by inject()
 
     private lateinit var viewModel: EnterPINViewModel
 
@@ -43,8 +42,8 @@ class EnterPINFragment : Fragment() {
             false
         )
         viewModel = ViewModelProviders.of(this, factory).get(EnterPINViewModel::class.java)
-        binding.viewmodel = viewModel;
-        username = args.username;
+        binding.viewmodel = viewModel
+        username = args.username
         handleViewComponent(binding)
 
         return binding.root
@@ -58,15 +57,19 @@ class EnterPINFragment : Fragment() {
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                if (p0?.length!! < 1) {
-                    textinputlayoutPIN.setError(getString(R.string.err_pin_required));
-                    textinputlayoutPIN.setErrorEnabled(true);
-                } else if (p0.length > 4) {
-                    textinputlayoutPIN.setError(getString(R.string.err_pin_exceeded));
-                    textinputlayoutPIN.setErrorEnabled(true);
-                } else {
-                    pin = Integer.parseInt(p0.toString())
-                    textinputlayoutPIN.setErrorEnabled(false)
+                when {
+                    p0?.length!! < 1 -> {
+                        textinputlayoutPIN.error = getString(R.string.err_pin_required)
+                        textinputlayoutPIN.isErrorEnabled = true
+                    }
+                    p0.length > 4 -> {
+                        textinputlayoutPIN.error = getString(R.string.err_pin_exceeded)
+                        textinputlayoutPIN.isErrorEnabled = true
+                    }
+                    else -> {
+                        pin = Integer.parseInt(p0.toString())
+                        textinputlayoutPIN.isErrorEnabled = false
+                    }
                 }
             }
 
@@ -78,10 +81,10 @@ class EnterPINFragment : Fragment() {
         })
         binding.btnNext.setOnClickListener { view: View ->
             viewModel.getListUser()?.observe(viewLifecycleOwner,
-                Observer<List<User?>?> { t: List<User?>? ->
+                { t: List<User?>? ->
                     if (t?.size!! > 0) {
                         if (pin != 0) {
-                            if(pin == t.get(0)?.pincode){
+                            if(pin == t[0]?.pincode && !binding.textinputlayoutPIN.isErrorEnabled){
                                 view.findNavController()
                                     .navigate(R.id.action_enterPINFragment_to_homeActivity)
                             }else {

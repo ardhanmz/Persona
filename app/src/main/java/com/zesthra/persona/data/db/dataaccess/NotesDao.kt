@@ -3,7 +3,6 @@ package com.zesthra.persona.data.db.dataaccess
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.zesthra.persona.data.db.entities.Notes
-import com.zesthra.persona.data.db.entities.User
 
 @Dao
 interface NotesDao {

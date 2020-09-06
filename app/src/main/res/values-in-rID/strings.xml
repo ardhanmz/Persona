@@ -10,4 +10,6 @@
     <string name="title_timeline">Linimasa</string>
     <string name="title_home">Beranda</string>
     <string name="err_pin_required">Mohon Masukkan PIN Anda</string>
+    <string name="err_username_exceeded">Username terlalu panjang</string>
+    <string name="greeting_enter_PIN">Selamat Datang kembali %1$s</string>
 </resources>

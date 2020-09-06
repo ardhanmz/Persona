@@ -13,6 +13,4 @@ data class User(
     var username : String,
     @ColumnInfo(name ="pincode")
     var pincode : Int
-){
-
-}
+)

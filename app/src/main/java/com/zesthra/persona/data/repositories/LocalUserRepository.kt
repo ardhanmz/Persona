@@ -8,7 +8,7 @@ class LocalUserRepository(
 ) {
     fun findByUsername(username: String) = appDatabase.getUserDao().findByUsername(username)
 
-    fun findAll() = appDatabase.getUserDao().findByAll();
+    fun findAll() = appDatabase.getUserDao().findByAll()
 
     suspend fun insertUser(user: User) = appDatabase.getUserDao().insert(user)
 

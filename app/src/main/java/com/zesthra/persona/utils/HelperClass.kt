@@ -5,6 +5,6 @@ import android.util.Log
 
 object HelperClass {
     fun logErrorMessage(errorMessage: String?) {
-        Log.d(TAG, errorMessage)
+        Log.d(TAG, errorMessage!!)
     }
 }

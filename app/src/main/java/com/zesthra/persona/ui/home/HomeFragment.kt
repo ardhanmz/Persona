@@ -25,10 +25,10 @@ class HomeFragment : Fragment() {
     ): View? {
         val binding: HomeFragmentBinding = DataBindingUtil.inflate(inflater,R.layout.home_fragment, container, false)
         viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
-        binding.viewmodel = viewModel;
+        binding.viewmodel = viewModel
         binding.fabHome.setOnClickListener { view : View ->
-            val action = HomeFragmentDirections.actionNavigationHomeToAddNotes();
-            view?.findNavController()?.navigate(action)
+            val action = HomeFragmentDirections.actionNavigationHomeToAddNotes()
+            view.findNavController().navigate(action)
         }
         return binding.root
     }

@@ -1,7 +1,6 @@
 package com.zesthra.persona.data.db.entities
 
 import androidx.room.*
-import java.util.*
 
 @Entity(foreignKeys = arrayOf(
         ForeignKey(entity = User::class,
@@ -28,6 +27,4 @@ data class Notes (
     var body_notes : Int,
     @ColumnInfo(name = "color_notes")
     var color_notes : String,
-){
-
-}
+)
