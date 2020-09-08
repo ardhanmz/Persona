@@ -12,4 +12,11 @@
     <string name="err_pin_exceeded">Maximal PIN Length Is 4</string>
     <string name="err_username_exceeded">Username is too long</string>
     <string name="greeting_enter_PIN">Welcome Back %1$s</string>
+    <string name="error_msg_no_biometric_hardware">No Biometric Hardware Detected</string>
+    <string name="error_msg_biometric_hw_unavailable">Biometric Hardware Unavailable</string>
+    <string name="error_msg_biometric_not_setup">Biometric hasn\'t been initialized</string>
+    <string name="auth_title">One Touch Sign-In</string>
+    <string name="auth_description">Please place your fingertip on the scanner to verify your identity</string>
+    <string name="error_msg_auth_error">Authentication Error %1$s</string>
+    <string name="error_msg_auth_failed">Authentication Failed</string>
 </resources>
