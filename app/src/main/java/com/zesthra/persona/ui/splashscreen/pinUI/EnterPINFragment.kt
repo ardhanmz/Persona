@@ -27,9 +27,6 @@ import java.util.concurrent.Executor
 class EnterPINFragment : Fragment() {
 
     private val args: EnterPINFragmentArgs by navArgs()
-    lateinit var username : String
-    var pin : Int = 0
-    var isHWAvailable = false
 
     private val factory: EnterPINViewModelFactory by inject()
 
@@ -47,7 +44,7 @@ class EnterPINFragment : Fragment() {
         )
         viewModel = ViewModelProviders.of(this, factory).get(EnterPINViewModel::class.java)
         binding.viewmodel = viewModel
-        username = args.username
+        viewModel.username = args.username
         handleBiometricAuth()
         handleViewComponent(binding)
         return binding.root
@@ -58,13 +55,13 @@ class EnterPINFragment : Fragment() {
         if (biometricManager != null) {
             when (biometricManager.canAuthenticate()) {
                 BiometricManager.BIOMETRIC_SUCCESS ->
-                    isHWAvailable = true
+                    viewModel.isBiometricAvailable = true
                 BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE ->
-                    isHWAvailable = false
+                    viewModel.isBiometricAvailable = false
                 BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE ->
-                    isHWAvailable = false
+                    viewModel.isBiometricAvailable = false
                 BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED ->
-                    isHWAvailable = false
+                    viewModel.isBiometricAvailable = false
             }
         }
     }
@@ -107,10 +104,10 @@ class EnterPINFragment : Fragment() {
         biometricPrompt.authenticate(promptInfo)
     }
     private fun handleViewComponent(binding: EnterPINFragmentBinding) {
-        if(isHWAvailable){
+        if(viewModel.isBiometricAvailable){
             binding.instantUnlockButton.visibility = View.VISIBLE
         }
-        binding.greetings.text = getString(R.string.greeting_enter_PIN, username)
+        binding.greetings.text = getString(R.string.greeting_enter_PIN, viewModel.username)
         binding.textinputlayoutPIN.editText?.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
@@ -125,7 +122,7 @@ class EnterPINFragment : Fragment() {
                         textinputlayoutPIN.isErrorEnabled = true
                     }
                     else -> {
-                        pin = Integer.parseInt(p0.toString())
+                        viewModel.pin = Integer.parseInt(p0.toString())
                         textinputlayoutPIN.isErrorEnabled = false
                     }
                 }
@@ -141,8 +138,8 @@ class EnterPINFragment : Fragment() {
             viewModel.getListUser()?.observe(viewLifecycleOwner,
                 { t: List<User?>? ->
                     if (t?.size!! > 0) {
-                        if (pin != 0) {
-                            if(pin == t[0]?.pincode && !binding.textinputlayoutPIN.isErrorEnabled){
+                        if (viewModel.pin != 0) {
+                            if(viewModel.pin == t[0]?.pincode && !binding.textinputlayoutPIN.isErrorEnabled){
                                 view.findNavController()
                                     .navigate(R.id.action_enterPINFragment_to_homeActivity)
                             }else {

@@ -11,17 +11,10 @@ import java.lang.Exception
 
 class EnterPINViewModel(val localUserRepository: LocalUserRepository) : ViewModel() {
     // TODO: Implement the ViewModel
+    var isBiometricAvailable = false
+    var pin : Int = 0
+    lateinit var username : String
 
-    fun saveUser(user: User){
-        try{
-            Coroutines.io {
-                localUserRepository.insertUser(user)
-            }
-        }catch (ex : Exception){
-            Log.e(Global.tag_err_save_usr, ex.message!!)
-        }
-
-    }
     fun getListUser(): LiveData<List<User?>?>? {
         return localUserRepository.findAll()
     }
