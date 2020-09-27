@@ -12,14 +12,13 @@ import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.zesthra.persona.R
 import com.zesthra.persona.data.db.entities.User
 import com.zesthra.persona.databinding.EnterPINFragmentBinding
 import kotlinx.android.synthetic.main.enter_p_i_n_fragment.*
-import kotlinx.android.synthetic.main.sign_up_fragment.*
 import org.koin.android.ext.android.inject
 import java.util.concurrent.Executor
 
@@ -42,7 +41,7 @@ class EnterPINFragment : Fragment() {
             container,
             false
         )
-        viewModel = ViewModelProviders.of(this, factory).get(EnterPINViewModel::class.java)
+        viewModel = ViewModelProvider(this, factory).get(EnterPINViewModel::class.java)
         binding.viewmodel = viewModel
         viewModel.username = args.username
         handleBiometricAuth()
@@ -130,7 +129,7 @@ class EnterPINFragment : Fragment() {
             override fun afterTextChanged(p0: Editable?) {
             }
         })
-        binding.instantUnlockButton.setOnClickListener { view: View ->
+        binding.instantUnlockButton.setOnClickListener {
             val executor = ContextCompat.getMainExecutor(context)
             authUser(executor)
         }

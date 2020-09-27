@@ -1,14 +1,14 @@
 package com.zesthra.persona.ui.splashscreen.signupUI
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.zesthra.persona.R
 import com.zesthra.persona.databinding.SignUpFragmentBinding
@@ -28,13 +28,13 @@ class SignUpFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding: SignUpFragmentBinding =  DataBindingUtil.inflate(inflater, R.layout.sign_up_fragment, container, false)
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(SignUpViewModel::class.java)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(SignUpViewModel::class.java)
         binding.viewmodel = viewModel
         handleViewComponent(binding)
         return  binding.root
     }
 
-    fun handleViewComponent(binding: SignUpFragmentBinding) {
+    private fun handleViewComponent(binding: SignUpFragmentBinding) {
         //Handle TextInput Username
         binding.textinputlayoutusername.textinputedittextusername.addTextChangedListener(object : TextWatcher{
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -42,16 +42,19 @@ class SignUpFragment : Fragment() {
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                if(p0?.length!! < 1){
-                    textinputlayoutusername.error = getString(R.string.error_insert_username)
-                    textinputlayoutusername.isErrorEnabled = true
-                }else if(p0.length > 8){
-                    textinputlayoutusername.error = getString(R.string.err_username_exceeded)
-                    textinputlayoutusername.isErrorEnabled = true
-                }
-                else{
-                    viewModel.username = p0.toString()
-                    textinputlayoutusername.isErrorEnabled = false
+                when {
+                    p0?.length!! < 1 -> {
+                        textinputlayoutusername.error = getString(R.string.error_insert_username)
+                        textinputlayoutusername.isErrorEnabled = true
+                    }
+                    p0.length > 8 -> {
+                        textinputlayoutusername.error = getString(R.string.err_username_exceeded)
+                        textinputlayoutusername.isErrorEnabled = true
+                    }
+                    else -> {
+                        viewModel.username = p0.toString()
+                        textinputlayoutusername.isErrorEnabled = false
+                    }
                 }
             }
 
@@ -92,7 +95,7 @@ class SignUpFragment : Fragment() {
                     viewModel.pincode != 0 && !textinputlayoutpin.isErrorEnabled){
                 val user = viewModel.createDataUser()
                 viewModel.saveUser(user)
-                if(viewModel.exceptionMSG.length ==0){
+                if(viewModel.exceptionMSG.isEmpty()){
                     view.findNavController().navigate(R.id.action_signUpFragment_to_homeActivity)
                 }
             }
