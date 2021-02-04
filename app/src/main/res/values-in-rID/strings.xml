@@ -12,4 +12,19 @@
     <string name="err_pin_required">Mohon Masukkan PIN Anda</string>
     <string name="err_username_exceeded">Username terlalu panjang</string>
     <string name="greeting_enter_PIN">Selamat Datang kembali %1$s</string>
+    <string name="income">Pemasukan</string>
+    <string name="expense">Pengeluaran</string>
+    <string name="calculate">Hitung</string>
+    <string name="your_expense">Pengeluaran Anda</string>
+    <string name="error_msg_auth_failed">Autentikasi Gagal</string>
+    <string name="error_msg_auth_error">Kesalahan Autentikasi %1$s</string>
+    <string name="auth_description">Mohon Letakkan permukaan jari pada pemindai untuk verifikasi identitas</string>
+    <string name="auth_title">Satu Sentuhan Untuk Masuk</string>
+    <string name="error_msg_no_biometric_hardware">Tidak ada hardware biometrik terdeteksi</string>
+    <string name="error_msg_biometric_hw_unavailable">hardware biometrik tidak tersedia</string>
+    <string name="error_msg_biometric_not_setup">biometrik tidak di inisialisasi</string>
+    <string name="my_saving">Penghematan</string>
+    <string name="online_subcription">Langganan Online</string>
+    <string name="see_all">Lihat Semua</string>
+    <string name="offline_subcription">Langganan Offline</string>
 </resources>

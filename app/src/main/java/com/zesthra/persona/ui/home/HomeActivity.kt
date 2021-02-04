@@ -34,9 +34,9 @@ class HomeActivity : AppCompatActivity() {
     override fun onBackPressed() {
         when(Navigation.findNavController(this, R.id.nav_home).currentDestination?.id) {
             R.id.navigation_home -> {
-                val dialog = AlertDialog.Builder(this).setMessage("Hello").setPositiveButton(
+                AlertDialog.Builder(this).setMessage("Hello").setPositiveButton(
                     "Ok",
-                    DialogInterface.OnClickListener { dialogInterface, i ->
+                    { dialogInterface, i ->
                         finish()
                     }).show()
             }

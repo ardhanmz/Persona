@@ -7,7 +7,8 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
 import androidx.navigation.findNavController
 import com.zesthra.persona.R
 import com.zesthra.persona.data.db.entities.User
@@ -31,7 +32,7 @@ class HelloLandingFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel = ViewModelProviders.of(this, factory).get(HelloLandingViewModel::class.java)
+        viewModel = ViewModelProvider(this, factory).get(HelloLandingViewModel::class.java)
         val binding: FragmentHelloLandingBinding =  DataBindingUtil.inflate(inflater, R.layout.fragment_hello_landing, container, false)
         binding.viewmodel = viewModel
         checkUIMode()
@@ -60,7 +61,7 @@ class HelloLandingFragment : Fragment() {
                 { t: List<User?>? ->
                     if(t?.size!! > 0){
 //                        Toast.makeText(context, "Anda Telah Terdaftar", Toast.LENGTH_SHORT).show()
-                        val action = HelloLandingFragmentDirections.actionHelloToEnterpin(t.get(0)!!.username)
+                        val action = HelloLandingFragmentDirections.actionHelloToEnterpin(t[0]!!.username)
                         view.findNavController().navigate(action)
                     }else{
 //                        Toast.makeText(context, "User Kosong", Toast.LENGTH_SHORT).show()

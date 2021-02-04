@@ -9,8 +9,12 @@ import androidx.room.PrimaryKey
 data class User(
     @PrimaryKey(autoGenerate = true)
     var id: Int,
-    @ColumnInfo(name = "username")
+    @ColumnInfo(name = "DTM_CRT")
+    var dtm_crt: Long,
+    @ColumnInfo(name = "USERNAME")
     var username : String,
-    @ColumnInfo(name ="pincode")
-    var pincode : Int
+    @ColumnInfo(name ="PINCODE")
+    var pincode : Int,
+    @ColumnInfo(name= "INCOME")
+    var income: Int,
 )

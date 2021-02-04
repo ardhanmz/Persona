@@ -19,4 +19,12 @@
     <string name="auth_description">Please place your fingertip on the scanner to verify your identity</string>
     <string name="error_msg_auth_error">Authentication Error %1$s</string>
     <string name="error_msg_auth_failed">Authentication Failed</string>
+    <string name="income">Income</string>
+    <string name="expense">Expense</string>
+    <string name="calculate">Calculate</string>
+    <string name="your_expense">Your Expense</string>
+    <string name="my_saving">My Saving</string>
+    <string name="online_subcription">Online Subcription</string>
+    <string name="see_all">See All</string>
+    <string name="offline_subcription">Offline Subcription</string>
 </resources>

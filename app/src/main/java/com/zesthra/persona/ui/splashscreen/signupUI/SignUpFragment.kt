@@ -1,6 +1,6 @@
 package com.zesthra.persona.ui.splashscreen.signupUI
 
-import androidx.lifecycle.ViewModelProviders
+
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.zesthra.persona.R
 import com.zesthra.persona.databinding.SignUpFragmentBinding
@@ -28,7 +29,7 @@ class SignUpFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding: SignUpFragmentBinding =  DataBindingUtil.inflate(inflater, R.layout.sign_up_fragment, container, false)
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(SignUpViewModel::class.java)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(SignUpViewModel::class.java)
         binding.viewmodel = viewModel
         handleViewComponent(binding)
         return  binding.root
