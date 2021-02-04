@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.zesthra.persona.R
 import com.zesthra.persona.databinding.DarkModeLandingFragmentBinding
@@ -38,19 +38,20 @@ class DarkModeLandingFragment : Fragment() {
     ): View? {
 
         val binding : DarkModeLandingFragmentBinding = DataBindingUtil.inflate(inflater, R.layout.dark_mode_landing_fragment, container, false)
-        viewModel = ViewModelProviders.of(this, factory).get(DarkModeLandingViewModel::class.java)
+        viewModel = ViewModelProvider(this, factory).get(DarkModeLandingViewModel::class.java)
         binding.viewmodel = viewModel
-        binding.btnDark.setOnClickListener { view: View ->
+        binding.btnDark.setOnClickListener {
             AppCompatDelegate.setDefaultNightMode(
                 AppCompatDelegate.MODE_NIGHT_YES)
             viewModel.selectDarkMode()
         }
-        binding.btnLight.setOnClickListener { view: View ->
+        binding.btnLight.setOnClickListener {
             AppCompatDelegate.setDefaultNightMode(
                 AppCompatDelegate.MODE_NIGHT_NO)
             viewModel.selectLightMode()
         }
         binding.btnNext.setOnClickListener { view: View ->
+            if(viewModel.sharedPreference.getUIMode())
             val action = DarkModeLandingFragmentDirections.actionDarkModeLandingFragment2ToSignUpFragment2()
             view.findNavController().navigate(action)
         }
