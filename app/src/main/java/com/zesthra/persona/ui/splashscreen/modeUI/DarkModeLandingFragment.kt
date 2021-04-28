@@ -51,9 +51,10 @@ class DarkModeLandingFragment : Fragment() {
             viewModel.selectLightMode()
         }
         binding.btnNext.setOnClickListener { view: View ->
-            if(viewModel.sharedPreference.getUIMode())
-            val action = DarkModeLandingFragmentDirections.actionDarkModeLandingFragment2ToSignUpFragment2()
-            view.findNavController().navigate(action)
+            if(viewModel.sharedPreference.getUIMode()!!) {
+                val action = DarkModeLandingFragmentDirections.actionDarkModeLandingFragment2ToSignUpFragment2()
+                view.findNavController().navigate(action)
+            }
         }
         binding.btnSkip.setOnClickListener { view: View ->
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)

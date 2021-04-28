@@ -61,7 +61,8 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="15dp"
                     android:layout_toEndOf="@+id/txt_top_profile"
-                    android:text="Dummy"
+                    android:text="Wow"
+                android:textColor="@color/black"
                     android:textAlignment="center"
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -125,7 +126,7 @@
                         <ImageView
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-                                android:src="@drawable/ic_salary" />
+                                android:src="@drawable/ic_expenses" />
 
                         <TextView
                                 android:layout_width="wrap_content"
@@ -136,7 +137,7 @@
                                 android:id="@+id/txt_sum_income"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Rp 1.000.000" />
+                                android:text="www"/>
                     </LinearLayout>
 
                     <LinearLayout

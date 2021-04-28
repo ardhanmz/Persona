@@ -8,10 +8,12 @@ import com.zesthra.persona.data.repositories.LocalUserRepository
 class HomeViewModel(
     private val localUserRepository: LocalUserRepository
 ) : ViewModel() {
-    var username="";
-    var income = 0;
+    var username : String = ""
+    var income : String = ""
+
     // TODO: Implement the ViewModel
     fun getListUser(): LiveData<List<User?>?>? {
         return localUserRepository.findAll()
     }
+
 }
